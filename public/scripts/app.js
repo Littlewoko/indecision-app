@@ -6,9 +6,10 @@ console.log("Running");
 
 var app = {
     title: 'Indecision App',
-    subtitle: 'Time to spin the wheel'
-
+    subtitle: 'Time to spin the wheel',
+    options: ['One', 'Two']
 };
+
 var template = React.createElement(
     'div',
     null,
@@ -17,25 +18,12 @@ var template = React.createElement(
         null,
         app.title
     ),
-    React.createElement(
+    app.subtitle && React.createElement(
         'p',
         null,
         app.subtitle
     ),
-    React.createElement(
-        'ol',
-        null,
-        React.createElement(
-            'li',
-            null,
-            'Item One'
-        ),
-        React.createElement(
-            'li',
-            null,
-            'Item Two'
-        )
-    )
+    app.options.length > 0 ? 'Here are your options:' : 'No options available'
 );
 
 var user = {
@@ -44,7 +32,7 @@ var user = {
     location: 'Swansea'
 };
 
-function getLocation(location) {
+var getLocation = function getLocation(location) {
     if (location) {
         return React.createElement(
             'p',
@@ -53,7 +41,7 @@ function getLocation(location) {
             location
         );
     }
-}
+};
 
 var templateTwo = React.createElement(
     'div',
@@ -63,7 +51,7 @@ var templateTwo = React.createElement(
         null,
         user.name ? user.name : 'Anonymous'
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         'p',
         null,
         'Age: ',
@@ -74,4 +62,4 @@ var templateTwo = React.createElement(
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);

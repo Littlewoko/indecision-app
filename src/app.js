@@ -5,16 +5,14 @@ console.log("Running")
 const app = {
     title: 'Indecision App',
     subtitle: 'Time to spin the wheel',
-
+    options: ['One', 'Two']
 }
-var template = (
+
+const template = (
     <div>
         <h1>{app.title}</h1>
-        <p>{app.subtitle}</p>
-        <ol>
-            <li>Item One</li>
-            <li>Item Two</li>
-        </ol>
+        {app.subtitle && <p>{app.subtitle}</p>}
+        {app.options.length > 0 ? 'Here are your options:' : 'No options available'}
     </div>
 );
 
@@ -24,20 +22,20 @@ const user = {
     location: 'Swansea'
 }
 
-function getLocation(location) {
+const getLocation = (location) => {
     if (location) {
         return <p>Location: {location}</p>
     }
 }
 
-var templateTwo = (
+const templateTwo = (
     <div>
         <h1>{user.name ? user.name : 'Anonymous'}</h1>
-        <p>Age: {user.age}</p>
+        {(user.age && user.age >=18) && <p>Age: {user.age}</p>}
         {getLocation(user.location)}
     </div>
 );
 
-var appRoot = document.getElementById('app');
+const appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);

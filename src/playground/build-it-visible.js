@@ -1,26 +1,35 @@
-const toggle = ['', 'This is some info']
-const buttonName = ['Show Details', 'Hide Details']
-let curToggle = 0
-const toggleVisibility = () => {
-    if (curToggle === 1) {
-        curToggle = 0
-    } else {
-        curToggle = 1
+class Visbility extends React.Component {
+    constructor(props) {
+        super(props)
+        this.handleToggleVisibility = this.handleToggleVisibility.bind(this)
+        this.state = {
+            visibility: false
+        }
     }
-
-    renderVisBuild()
+    handleToggleVisibility() {
+        this.setState((prevState) => {
+            return {
+                visibility: !prevState.visibility
+            }
+        })
+    }
+    render() {
+        return (
+            <div>
+                <h1>Visibility Toggle</h1>
+                <button onClick={this.handleToggleVisibility}>
+                    {this.state.visibility ? 'Hide Details' : 'Show Details'}
+                </button>
+                {
+                    this.state.visibility && (
+                        <div>
+                            <p>Details</p>
+                        </div>
+                    )
+                }
+            </div>
+        )
+    }
 }
-const renderVisBuild = () => {
-    const template = (
-        <div>
-            <h1>Visbility Toggle</h1>
-            <button onClick={toggleVisibility}>{buttonName[curToggle]}</button>
-            <p id="vis">{toggle[curToggle]}</p>
-        </div>
-        
-    )
 
-    ReactDOM.render(template, appRoot)
-}
-
-renderVisBuild()
+ReactDOM.render(<Visbility />, document.getElementById('app'))

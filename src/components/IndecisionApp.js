@@ -31,6 +31,12 @@ export default class IndecisionApp extends React.Component {
         }))
     }
 
+    handleClearSelectedOption = () => {
+        this.setState(() => ({
+            selectedOption: undefined
+        }))
+    }
+
     handleAddOption = (option) => {
         if (!option) {
             return 'Enter valid value to add item'
@@ -84,6 +90,7 @@ export default class IndecisionApp extends React.Component {
                 />
                 <OptionModal 
                     selectedOption={this.state.selectedOption}
+                    handleClearSelectedOption={this.handleClearSelectedOption}
                 />
             </div>
         )

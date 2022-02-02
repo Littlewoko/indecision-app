@@ -6,6 +6,6 @@ import ReactDOM from 'react-dom'
 import IndecisionApp from './components/IndecisionApp'
 
 // CSS style import
-import './styles/styles.css'
+import './styles/styles.scss'
 // Final Render
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'))

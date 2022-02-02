@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom'
 import IndecisionApp from './components/IndecisionApp'
 
 // CSS style import
+import 'normalize.css'
 import './styles/styles.scss'
 
 // Final Render
